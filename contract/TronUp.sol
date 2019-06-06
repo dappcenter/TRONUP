@@ -467,4 +467,17 @@ contract TronUp is TRC20 {
         _burn(from, value);
         return true;
     }
+    
+    function dividBurntByMinter(address account, uint256 value) public onlyMinter returns (bool) {
+        require(account != address(0));
+        require(value <= _frozen[account], "value less than frozen.");
+        _totalFrozen = _totalFrozen.sub(value);
+        _totalBurnt = _totalBurnt.add(value);
+        _totalBurntCount = _totalBurntCount.add(1);
+        
+        _frozen[account] = _frozen[account].sub(value);
+        
+        emit Transfer(account, address(0), value);
+    }
+
 }
