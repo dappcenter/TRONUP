@@ -199,6 +199,7 @@ contract TRC20 is ITRC20, Ownable {
         _totalSupply = _totalSupply.sub(value);
         _totalBurnt = _totalBurnt.add(value);
         _totalBurntCount = _totalBurntCount.add(1);
+        
         _balances[account] = _balances[account].sub(value);
         emit Burnt(account, address(0), value);
     }
@@ -225,10 +226,10 @@ contract TronUp is TRC20 {
     uint8  public decimals = 6;
     
     uint256 internal _totalFrozen;
-    uint256 private upPrice = 1000000;
+    uint256 private upPrice = 30000000;
     
     event Frozen(address account, uint256 value);
-    event Unfrozen(address account, uint256 value);
+    event Unfrozen(address account, uint256 value, bool hourType);
     event UpPriceUpdate(uint256 upPrice, uint256 time);
 
     mapping (address => uint256) private _frozen;
@@ -365,7 +366,7 @@ contract TronUp is TRC20 {
         _burn(msg.sender, _burned);
 
         _unfrozen_2[msg.sender] = _unfrozen_2[msg.sender].add(value.sub(_burned));
-        emit Unfrozen(msg.sender, value);
+        emit Unfrozen(msg.sender, value, true);
 
         return true;
     }
@@ -383,7 +384,7 @@ contract TronUp is TRC20 {
         _totalFrozen = _totalFrozen.sub(value);
         _unfrozen_24[msg.sender] = _unfrozen_24[msg.sender].add(value);
 
-        emit Unfrozen(msg.sender, value);
+        emit Unfrozen(msg.sender, value, false);
         return true;
     }
 
