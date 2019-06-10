@@ -272,15 +272,6 @@ contract TronUp is TRC20 {
     }
     
     /**
-     * @dev increase token totalSupply.
-     * @param value uint256 The amount of token to be increased.
-     */
-    function mintToken(uint256 value) public onlyOwner {
-        _totalSupply = _totalSupply.add(value);
-        _balances[address(this)] = _balances[address(this)].add(value);
-    }
-    
-    /**
     * @dev Gets the 12 hours thaws token of the specified address.
     * @return An uint256 representing the amount thaws by the passed address.
     */
