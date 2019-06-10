@@ -48,6 +48,9 @@ contract TRC20 is ITRC20, Ownable {
     uint256 internal _totalBurnt;
     uint256 internal _totalBurntCount;
     
+    event Minted(address indexed from, address indexed to, uint256 value);
+    event Burnt(address indexed from, address indexed to, uint256 value);
+    
     /**
      * @dev Total number of tokens in existence
      */
@@ -181,7 +184,7 @@ contract TRC20 is ITRC20, Ownable {
         _totalMint = _totalMint.add(value);
         _balances[address(this)] = _balances[address(this)].sub(value);
         _balances[account] = _balances[account].add(value);
-        emit Transfer(address(this), account, value);
+        emit Minted(address(this), account, value);
     }
 
     /**
@@ -197,7 +200,7 @@ contract TRC20 is ITRC20, Ownable {
         _totalBurnt = _totalBurnt.add(value);
         _totalBurntCount = _totalBurntCount.add(1);
         _balances[account] = _balances[account].sub(value);
-        emit Transfer(account, address(0), value);
+        emit Burnt(account, address(0), value);
     }
 
     /**
@@ -468,7 +471,7 @@ contract TronUp is TRC20 {
         
         _frozen[account] = _frozen[account].sub(value);
         
-        emit Transfer(account, address(0), value);
+        emit Burnt(account, address(0), value);
     }
 
 }
