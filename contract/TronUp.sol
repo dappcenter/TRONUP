@@ -261,7 +261,7 @@ contract TronUp is TRC20 {
         approvedMinters[_minter] = false;
     }
     
-    function updateUpPrice(uint256 _upPrice) public onlyOwner {
+    function updateUpPrice(uint256 _upPrice) public onlyMinter {
         upPrice = _upPrice;
         emit UpPriceUpdate(upPrice, now);
     }
