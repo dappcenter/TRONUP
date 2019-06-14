@@ -24,11 +24,6 @@ interface ITRC20 {
     event Approval(address indexed account, address indexed spender, uint256 value);
 }
 
-/**
- * This implementation emits additional Approval events, allowing applications to reconstruct the allowance status for
- * all accounts just by listening to said events. Note that this isn't required by the specification, and other
- * compliant implementations may not do it.
- */
 contract TRC20 is ITRC20, Ownable {
     using SafeMath for uint256;
 
