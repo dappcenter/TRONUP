@@ -104,8 +104,6 @@ contract TRC20 is ITRC20, Ownable {
 
     /**
      * @dev Transfer tokens from one address to another.
-     * Note that while this function emits an Approval event, this is not required as per the specification,
-     * and other compliant implementations may not emit the event.
      * @param from address The address which you want to send tokens from
      * @param to address The address which you want to transfer to
      * @param value uint256 the amount of tokens to be transferred
@@ -118,11 +116,6 @@ contract TRC20 is ITRC20, Ownable {
 
     /**
      * @dev Increase the amount of tokens that an account allowed to a spender.
-     * approve should be called when _allowed[msg.sender][spender] == 0. To increment
-     * allowed value is better to use this function to avoid 2 calls (and wait until
-     * the first transaction is mined)
-     * From MonolithDAO Token.sol
-     * Emits an Approval event.
      * @param spender The address which will spend the funds.
      * @param addedValue The amount of tokens to increase the allowance by.
      */
@@ -133,11 +126,6 @@ contract TRC20 is ITRC20, Ownable {
 
     /**
      * @dev Decrease the amount of tokens that an account allowed to a spender.
-     * approve should be called when _allowed[msg.sender][spender] == 0. To decrement
-     * allowed value is better to use this function to avoid 2 calls (and wait until
-     * the first transaction is mined)
-     * From MonolithDAO Token.sol
-     * Emits an Approval event.
      * @param spender The address which will spend the funds.
      * @param subtractedValue The amount of tokens to decrease the allowance by.
      */
