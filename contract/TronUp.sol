@@ -39,9 +39,6 @@ contract TRC20 is ITRC20, Ownable {
     event Minted(address indexed from, address indexed to, uint256 value);
     event Burnt(address indexed from, address indexed to, uint256 value);
     
-    /**
-     * @dev Total number of tokens in existence
-     */
     function totalSupply() public view returns (uint256) {
         return _totalSupply;
     }
@@ -58,21 +55,10 @@ contract TRC20 is ITRC20, Ownable {
         return _totalBurntCount;
     }
 
-    /**
-     * @dev Gets the balance of the specified address.
-     * @param account The address to query the balance of.
-     * @return A uint256 representing the amount owned by the passed address.
-     */
     function balanceOf(address account) public view returns (uint256) {
         return _balances[account];
     }
 
-    /**
-     * @dev Function to check the amount of tokens that an account allowed to a spender.
-     * @param account address The address which owns the funds.
-     * @param spender address The address which will spend the funds.
-     * @return A uint256 specifying the amount of tokens still available for the spender.
-     */
     function allowance(address account, address spender) public view returns (uint256) {
         return _allowed[account][spender];
     }
