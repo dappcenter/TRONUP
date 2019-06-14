@@ -136,12 +136,6 @@ contract TRC20 is ITRC20, Ownable {
         emit Burnt(account, address(0), value);
     }
 
-    /**
-     * @dev Approve an address to spend another addresses' tokens.
-     * @param account The address that owns the tokens.
-     * @param spender The address that will spend the tokens.
-     * @param value The number of tokens that can be spent.
-     */
     function _approve(address account, address spender, uint256 value) internal {
         require(spender != address(0));
         require(account != address(0));
