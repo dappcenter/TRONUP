@@ -68,11 +68,6 @@ contract TRC20 is ITRC20, Ownable {
         return true;
     }
 
-    /**
-     * @dev Approve the passed address to spend the specified amount of tokens on behalf of msg.sender.
-     * @param spender The address which will spend the funds.
-     * @param value The amount of tokens to be spent.
-     */
     function approve(address spender, uint256 value) public returns (bool) {
         _approve(msg.sender, spender, value);
         return true;
