@@ -84,11 +84,6 @@ contract TRC20 is ITRC20, Ownable {
         return true;
     }
 
-    /**
-     * @dev Decrease the amount of tokens that an account allowed to a spender.
-     * @param spender The address which will spend the funds.
-     * @param subtractedValue The amount of tokens to decrease the allowance by.
-     */
     function decreaseAllowance(address spender, uint256 subtractedValue) public returns (bool) {
         _approve(msg.sender, spender, _allowed[msg.sender][spender].sub(subtractedValue));
         return true;
