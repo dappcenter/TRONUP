@@ -79,11 +79,6 @@ contract TRC20 is ITRC20, Ownable {
         return true;
     }
 
-    /**
-     * @dev Increase the amount of tokens that an account allowed to a spender.
-     * @param spender The address which will spend the funds.
-     * @param addedValue The amount of tokens to increase the allowance by.
-     */
     function increaseAllowance(address spender, uint256 addedValue) public returns (bool) {
         _approve(msg.sender, spender, _allowed[msg.sender][spender].add(addedValue));
         return true;
