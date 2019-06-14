@@ -82,11 +82,6 @@ contract TRC20 is ITRC20, Ownable {
         return _allowed[account][spender];
     }
 
-    /**
-     * @dev Transfer token to a specified address
-     * @param to The address to transfer to.
-     * @param value The amount to be transferred.
-     */
     function transfer(address to, uint256 value) public returns (bool) {
         _transfer(msg.sender, to, value);
         return true;
